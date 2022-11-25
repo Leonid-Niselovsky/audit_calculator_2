@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      margin: 0;
+    }
+
+    .container {
+      width: 60%;
+    }
+
+    .form {
+      padding: 0 20px;
+    }
+
+    .form_text {
+      font-family: 'Roboto', sans-serif;
+      font-weight: bold;
+      color: rgb(5, 25, 69);
+      font-size: 18px;
+    }
+
+    .form__input {
+      width: 100%;
+      border-radius: 0;
+      font-size: 14px;
+      padding: 0 0 5px 0;
+      background: 0 0;
+      border: none;
+      border-bottom: 2px solid #dbe3ef;
+      color: #73818c;
+      outline: none;
+    }
+
+    .form__input:hover {
+      border-bottom: 2px solid red;
+    }
+
+    .red {
+      color: red;
+    }
+
+    .form__saving {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    .block {
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="form">
+      <div class="block">   
+        <p class="form_text">КОЛИЧЕСТВО СОТРУДНИКОВ</p>
+        <input class="form__input input-1 input" placeholder="введите данные"></input>
+      </div>
+      <div class="block">    
+        <p class="form_text">СРЕДНЯЯ ЗАРАБОТНАЯ ПЛАТА</p>
+        <input class="form__input input-2 input" placeholder="введите данные"></input>
+      </div>
+      <div class="block form__saving">
+        <p class="form_text">ВАША ЭКОНОМИЯ</p>
+        <p class="form_text amount-economy"><span class="red">0</span> руб.</p>
+      </div>
+    </div>
+  </div>
+  <script>
+    const input1 = document.querySelector('.input-1');
+    const input2 = document.querySelector('.input-2');
+    const total = document.querySelector('.red');
+    const inputs = document.querySelectorAll('input');
+
+    const getData = () => {
+
+      let totalSum = Math.round((+input2.value - 15279) * 0.15 * +input1.value);
+      console.log(totalSum);
+      total.innerText = totalSum;
+    }
+
+    for(const input of inputs) {
+      input.addEventListener('input', function() {
+        getData();
+      })
+    }
+  </script>
+</body>
+</html>
